@@ -6,15 +6,12 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message": "First FastAPI Application"}
+    return {"message": "FastAPI Application"}
 
 class ChatRequest(BaseModel):
     message : str
     
-
 @app.post("/chat")
 def  chat(request: ChatRequest):
     answer = generate_response(request.message)
     return {"response" : answer}
-
-
